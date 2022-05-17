@@ -1,4 +1,4 @@
-package com.example.chatarra.Entitys;
+package com.example.chatarra.entitys;
 
 public class Scrap {
 
