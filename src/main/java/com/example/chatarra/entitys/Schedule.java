@@ -16,7 +16,7 @@ public class Scrap {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idDate
+    private Integer idDate;
 
     @Column(name = "StartDate", nullable = false)
     private Date startDate;
