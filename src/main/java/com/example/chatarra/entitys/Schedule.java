@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Setter
 public class Scrap {
 
-	  @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDate
 
