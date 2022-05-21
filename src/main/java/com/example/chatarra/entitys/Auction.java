@@ -30,4 +30,8 @@ public class Auction {
     @ManyToOne
     @JoinColumn( name = "idSeller", foreignKey = @ForeignKey(name = "FK_Subasta_Vendedor"))
     private Seller seller;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn( name = "idAccount", referencedColumnName = "id_cuenta")
+    private Account account;
 }

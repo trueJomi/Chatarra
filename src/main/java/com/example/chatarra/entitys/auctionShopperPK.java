@@ -6,6 +6,7 @@ import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 public class auctionShopperPK implements Serializable {
+
     @ManyToOne
     @JoinColumn( name = "idAuction", nullable = false)
     private Auction idAuction;

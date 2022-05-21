@@ -11,15 +11,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
+
 public class Shopper {
     @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer idShopper;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idShopper;
 
     @Column(name = "area")
-    String area;
+    private String area;
 
     @Column( name = "estado")
-    String status;
+    private String status;
 
 }
