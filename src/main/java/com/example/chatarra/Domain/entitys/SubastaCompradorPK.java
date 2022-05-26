@@ -1,17 +1,16 @@
-package com.example.chatarra.entitys;
+package com.example.chatarra.Domain.entitys;
 
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
-public class auctionShopperPK implements Serializable {
+public class SubastaCompradorPK implements Serializable {
 
     @ManyToOne
     @JoinColumn( name = "idAuction", nullable = false)
-    private Auction idAuction;
+    private Subasta idSubasta;
 
     @ManyToOne
     @JoinColumn( name = "idShopper", nullable = false)
-    private Shopper idShopper;
+    private Comprador idComprador;
 }

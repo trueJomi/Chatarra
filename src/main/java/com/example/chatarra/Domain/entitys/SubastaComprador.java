@@ -1,4 +1,4 @@
-package com.example.chatarra.entitys;
+package com.example.chatarra.Domain.entitys;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,15 +13,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "subastaComprador")
 @NoArgsConstructor
-@IdClass(auctionShopperPK.class)
+@IdClass(SubastaCompradorPK.class)
 @AllArgsConstructor
 @Getter
 @Setter
-public class auctionShopper {
+public class SubastaComprador {
 
     @Id
-    private Auction idAuction;
+    private Subasta idSubasta;
 
     @Id
-    private Shopper idShopper;
+    private Comprador idComprador;
 }

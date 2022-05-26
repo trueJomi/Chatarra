@@ -1,6 +1,5 @@
-package com.example.chatarra.entitys;
+package com.example.chatarra.Domain.entitys;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Auction {
+public class Subasta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAuction;
@@ -28,10 +27,11 @@ public class Auction {
     private String status;
 
     @ManyToOne
-    @JoinColumn( name = "idSeller", foreignKey = @ForeignKey(name = "FK_Subasta_Vendedor"))
-    private Seller seller;
+    @JoinColumn( name = "idVendedor", foreignKey = @ForeignKey(name = "FK_Subasta_Vendedor"))
+    private Vendedor vendedor;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn( name = "idAccount", referencedColumnName = "id_cuenta")
-    private Account account;
+    @OneToOne
+    @JoinColumn(name = "idChatarra",foreignKey = @ForeignKey(name = "FK_Subasta_Chatarra"))
+    private Chatarra chatarra;
+
 }

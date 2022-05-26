@@ -1,4 +1,4 @@
-package com.example.chatarra.entitys;
+package com.example.chatarra.Domain.entitys;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -14,11 +14,27 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Seller {
+public class Vendedor {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer idSeller;
+
+    @Column(name = "usuario")
+    @Size(min = 4, max = 20, message = "Usuario no Valido")
+    private String user;
+
+    @Column(name = "contraseña")
+    @Size(min = 8, max = 16, message = "contraseña invalida")
+    private String password;
+
+    @Column(name = "telefono")
+    @Size(min = 9, max = 9, message = "celular no valido")
+    private String phone;
+
+    @Column(name = "nombre")
+    @Size(min = 2, max = 30, message = "nombre no valido")
+    private String name;
 
     @Column(name = "región")
     @Size(min = 4, max=15, message = "region no valida")
@@ -38,5 +54,8 @@ public class Seller {
 
     @JsonIgnore
     @OneToMany(mappedBy = "seller",cascade = {CascadeType.ALL})
-    private List<Auction> auction;
+    private List<Subasta> subasta;
+
+    @OneToMany(mappedBy = "vendedor")
+    private List<Chatarra> chatarra;
 }

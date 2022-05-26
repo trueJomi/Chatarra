@@ -1,6 +1,5 @@
-package com.example.chatarra.entitys;
+package com.example.chatarra.Domain.entitys;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,24 +11,25 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Scrap {
+public class Chatarra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idChatarra;
 
-    @Column( name = "tipo",nullable = false)
-    private String type;
-
     @Column( name = "nombre",nullable = false)
     private String name;
+
+    @Column( name = "descripcion",nullable = false)
+    private String description;
+
 
     @Column( name = "precioBase",nullable = false)
     private Float basePrice;
 
-    @ManyToOne
-    @JoinColumn( name = "idSeller", foreignKey = @ForeignKey(name = "FK_Chatarra_Vendedor"))
-    private Seller seller;
+    @OneToOne
+    @JoinColumn( name = "idVendedor", foreignKey = @ForeignKey(name = "FK_Chatarra_Vendedor"))
+    private Vendedor vendedor;
 
-
+    @OneToOne
 }

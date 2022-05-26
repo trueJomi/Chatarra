@@ -1,12 +1,9 @@
-package com.example.chatarra.entitys;
+package com.example.chatarra.Domain.entitys;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.util.List;
 
 @Data
 @Entity
@@ -15,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class  Payment {
+public class Pago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +26,6 @@ public class  Payment {
 
     @OneToOne
     @JoinColumn( name = "idAuction", foreignKey = @ForeignKey(name = "FK_Subasta_pago"))
-    private Auction auction;
+    private Subasta subasta;
 }
 

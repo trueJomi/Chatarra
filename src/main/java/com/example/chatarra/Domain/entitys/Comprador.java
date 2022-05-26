@@ -1,23 +1,24 @@
-package com.example.chatarra.entitys;
-
+package com.example.chatarra.Domain.entitys;
 
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "cuenta")
+@Table(name = "compradores")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Account {
+
+public class Comprador {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cuenta")
-    private Integer idAcount;
+    private Integer idShopper;
 
     @Column(name = "usuario")
     @Size(min = 4, max = 20, message = "Usuario no Valido")
@@ -35,7 +36,15 @@ public class Account {
     @Size(min = 2, max = 30, message = "nombre no valido")
     private String name;
 
-    @OneToOne(mappedBy = "account")
-    @PrimaryKeyJoinColumn
-    private Auction auction;
+    @Column(name = "area")
+    private String area;
+
+    @Column( name = "estado")
+    private String status;
+
+    @OneToMany(mappedBy = "comprador",cascade = {CascadeType.ALL})
+    private List<Horario> horario;
+
+    @OneToMany(mappedBy = "comprador",cascade = {CascadeType.ALL})
+    private List<Propuesta> propuestas;
 }

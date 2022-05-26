@@ -1,6 +1,5 @@
-package com.example.chatarra.entitys;
+package com.example.chatarra.Domain.entitys;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Schedule {
+public class Horario {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +26,8 @@ public class Schedule {
 
     @Column(name = "DayWeek", nullable = false)
     private LocalDate dayWeek;
+
+    @ManyToOne
+    @JoinColumn( name = "idComprador", foreignKey = @ForeignKey(name = "FK_Horario_Comprador"))
+    private Comprador comprador;
  }

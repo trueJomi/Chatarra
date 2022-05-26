@@ -1,4 +1,4 @@
-package com.example.chatarra.entitys;
+package com.example.chatarra.Domain.entitys;
 
 import lombok.*;
 
@@ -12,20 +12,24 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Proffer {
+public class Propuesta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPropuesta;
+
     @Column( name = "precio",nullable = false)
     private String price;
+
     @Column( name = "tiempo",nullable = false)
     private LocalDate time;
+
     @ManyToOne
     @JoinColumn( name = "idAuction", foreignKey = @ForeignKey(name = "FK_Propuestas_Subasta"))
-    private Auction auction;
+    private Subasta subasta;
+
     @ManyToOne
     @JoinColumn( name = "idShopper", foreignKey = @ForeignKey(name = "FK_Propuestas_Comprador"))
-    private Shopper shopper;
+    private Comprador comprador;
 
 }
