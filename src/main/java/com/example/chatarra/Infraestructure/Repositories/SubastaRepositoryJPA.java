@@ -18,8 +18,8 @@ public interface SubastaRepositoryJPA extends JpaRepository<Subasta,Integer>{
     @Query("SELECT  a FROM Subasta a WHERE a.vendedor.idVendedor=:id")
     List<Subasta> ListarPorUsuario(@Param("id") Integer id );
 
-    @Query("SELECT a FROM Subasta a WHERE a.vendedor.user=:usuario and a.status=:estado")
-    List<Subasta> FiltrarEstadoUsuario(@Param("estado") String estado,@Param("usuario") String usuario);
+    @Query("SELECT a FROM Subasta a WHERE a.vendedor.idVendedor=:id and a.status=:estado")
+    List<Subasta> FiltrarEstadoUsuario(@Param("estado") String estado,@Param("id") Integer id);
 
 
 }

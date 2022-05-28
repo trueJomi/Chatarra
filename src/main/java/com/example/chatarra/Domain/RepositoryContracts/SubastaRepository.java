@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface SubastaRepository {
 
     Subasta guardar(Subasta subasta);
@@ -21,5 +20,5 @@ public interface SubastaRepository {
 
     List<Subasta> ListarPorUsuario(Integer id );
 
-    List<Subasta> FiltrarEstadoUsuario(String estado,String usuario);
+    List<Subasta> FiltrarEstadoUsuario(String estado,Integer id);
 }

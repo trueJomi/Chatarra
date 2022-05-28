@@ -41,4 +41,8 @@ public class CrearSubastaService {
         return subastaRepositoryImp.ListarPorUsuario(id);
     }
 
+    public List<Subasta> SubsatasEstados(Integer id,String estado){
+        return subastaRepositoryImp.FiltrarEstadoUsuario(estado,id);
+    }
+
 }

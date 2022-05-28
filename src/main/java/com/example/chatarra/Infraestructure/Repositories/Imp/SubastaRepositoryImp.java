@@ -40,7 +40,7 @@ public class SubastaRepositoryImp implements SubastaRepository {
     }
 
     @Override
-    public List<Subasta> FiltrarEstadoUsuario(String estado, String usuario) {
-        return db.FiltrarEstadoUsuario(estado,usuario);
+    public List<Subasta> FiltrarEstadoUsuario(String estado, Integer id) {
+        return db.FiltrarEstadoUsuario(estado,id);
     }
 }
