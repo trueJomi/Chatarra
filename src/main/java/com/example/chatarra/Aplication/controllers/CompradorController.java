@@ -1,4 +1,4 @@
-package com.example.chatarra.Application.Controllers;
+package com.example.chatarra.Aplication.controllers;
 
 import com.example.chatarra.Domain.Services.CompradorService;
 import com.example.chatarra.Domain.entitys.Comprador;
