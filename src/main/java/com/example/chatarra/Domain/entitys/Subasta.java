@@ -18,10 +18,10 @@ public class Subasta {
     private Integer idSubasta;
 
     @Column( name = "fecha",nullable = false)
-    private LocalDate date;
+    private LocalDate fecha;
 
     @Column( name = "tiempoRecojo" )
-    private LocalDate pickUpDate;
+    private LocalDate TimepoRecocjo;
 
     @Column( name = "estado", nullable = false)
     private String status;
@@ -31,7 +31,7 @@ public class Subasta {
     private Vendedor vendedor;
 
     @OneToOne
-    @JoinColumn(name = "idChatarra",foreignKey = @ForeignKey(name = "FK_Subasta_Chatarra"),nullable = false)
+    @JoinColumn(name = "idChatarra",foreignKey = @ForeignKey(name = "FK_Subasta_Chatarra"))
     private Chatarra chatarra;
 
 }

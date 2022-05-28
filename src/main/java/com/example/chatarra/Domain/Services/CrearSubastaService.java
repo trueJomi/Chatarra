@@ -12,9 +12,7 @@ import java.util.List;
 @Service
 public class CrearSubastaService {
 
-
     private  final SubastaRepositoryImp subastaRepositoryImp;
-
 
     public CrearSubastaService(SubastaRepositoryImp subastaRepositoryImp) {
         this.subastaRepositoryImp = subastaRepositoryImp;
@@ -23,7 +21,7 @@ public class CrearSubastaService {
     @Transactional
     public Subasta crearSubasta(Subasta subasta){
         subasta.setStatus("activo");
-        subasta.setDate(LocalDate.now());
+        subasta.setFecha(LocalDate.now());
         return subastaRepositoryImp.guardar(subasta);
     }
 

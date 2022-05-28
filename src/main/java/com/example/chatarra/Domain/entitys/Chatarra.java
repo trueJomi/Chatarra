@@ -27,7 +27,7 @@ public class Chatarra {
     @Column( name = "precioBase",nullable = false)
     private Float basePrice;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn( name = "idVendedor", foreignKey = @ForeignKey(name = "FK_Chatarra_Vendedor"))
     private Vendedor vendedor;
 
