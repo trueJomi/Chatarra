@@ -1,9 +1,9 @@
-package com.example.chatarra.config;
+package com.example.chatarra.Aplication.config;
 
 
-import com.example.chatarra.exception.GeneralServiceException;
-import com.example.chatarra.exception.IncorrectResourceRequestException;
-import com.example.chatarra.exception.ResourceNotFoundException;
+import com.example.chatarra.Domain.exception.GeneralServiceException;
+import com.example.chatarra.Domain.exception.IncorrectResourceRequestException;
+import com.example.chatarra.Domain.exception.ResourceNotFoundException;
 import com.example.chatarra.utils.WrapperResponse;
 
 import org.springframework.http.HttpHeaders;
@@ -17,7 +17,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 
-import lombok.extern.slf4j.Slf4j;
 import java.util.stream.Collectors;
 
 @ControllerAdvice

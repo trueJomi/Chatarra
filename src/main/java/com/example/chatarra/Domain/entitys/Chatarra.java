@@ -31,5 +31,6 @@ public class Chatarra {
     @JoinColumn( name = "idVendedor", foreignKey = @ForeignKey(name = "FK_Chatarra_Vendedor"))
     private Vendedor vendedor;
 
-    @OneToOne
+    @OneToOne(mappedBy = "chatarra",cascade = {CascadeType.ALL})
+    private Subasta subasta;
 }

@@ -18,7 +18,7 @@ public class Vendedor {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private Integer idSeller;
+    private Integer idVendedor;
 
     @Column(name = "usuario")
     @Size(min = 4, max = 20, message = "Usuario no Valido")
@@ -42,20 +42,20 @@ public class Vendedor {
 
     @Column(name = "ciudad")
     @Size(min = 4, max=20, message = "ciudad no valida")
-    private String city;
+    private String ciudad;
 
     @Column(name = "distrito")
     @Size(min = 4, max=20, message = "distrito no valida")
-    private String district;
+    private String distrito;
 
     @Column(name = "dirección")
     @Size(min = 4, max=50, message = "dirección no valida")
-    private String address;
+    private String direccion;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "seller",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "vendedor",cascade = {CascadeType.ALL})
     private List<Subasta> subasta;
 
-    @OneToMany(mappedBy = "vendedor")
-    private List<Chatarra> chatarra;
+    @OneToOne(mappedBy = "vendedor",cascade = {CascadeType.ALL})
+    private Chatarra chatarra;
 }

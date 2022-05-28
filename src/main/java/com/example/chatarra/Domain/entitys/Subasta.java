@@ -3,7 +3,7 @@ package com.example.chatarra.Domain.entitys;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -15,23 +15,23 @@ import java.time.LocalDateTime;
 public class Subasta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAuction;
+    private Integer idSubasta;
 
     @Column( name = "fecha",nullable = false)
-    private LocalDateTime date;
+    private LocalDate date;
 
     @Column( name = "tiempoRecojo" )
-    private LocalDateTime pickUpDate;
+    private LocalDate pickUpDate;
 
     @Column( name = "estado", nullable = false)
     private String status;
 
     @ManyToOne
-    @JoinColumn( name = "idVendedor", foreignKey = @ForeignKey(name = "FK_Subasta_Vendedor"))
+    @JoinColumn( name = "idVendedor", foreignKey = @ForeignKey(name = "FK_Subasta_Vendedor"),nullable = false)
     private Vendedor vendedor;
 
     @OneToOne
-    @JoinColumn(name = "idChatarra",foreignKey = @ForeignKey(name = "FK_Subasta_Chatarra"))
+    @JoinColumn(name = "idChatarra",foreignKey = @ForeignKey(name = "FK_Subasta_Chatarra"),nullable = false)
     private Chatarra chatarra;
 
 }

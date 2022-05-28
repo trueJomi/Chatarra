@@ -1,4 +1,4 @@
-package com.example.chatarra.exception;
+package com.example.chatarra.Domain.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
