@@ -1,4 +1,4 @@
-package com.example.chatarra.Domain.entitys;
+package com.example.chatarra.Domain.Entitys;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;

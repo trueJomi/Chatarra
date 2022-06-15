@@ -1,7 +1,7 @@
 package com.example.chatarra.Aplication.controllers;
 
 import com.example.chatarra.Domain.Services.VendedoresService;
-import com.example.chatarra.Domain.entitys.Vendedor;
+import com.example.chatarra.Domain.Entitys.Vendedor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

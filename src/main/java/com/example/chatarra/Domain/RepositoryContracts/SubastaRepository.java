@@ -1,9 +1,6 @@
 package com.example.chatarra.Domain.RepositoryContracts;
 
-import com.example.chatarra.Domain.entitys.Subasta;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
+import com.example.chatarra.Domain.Entitys.Subasta;
 
 import java.util.List;
 

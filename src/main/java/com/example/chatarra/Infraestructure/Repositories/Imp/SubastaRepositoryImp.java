@@ -1,9 +1,9 @@
 package com.example.chatarra.Infraestructure.Repositories.Imp;
 
 import com.example.chatarra.Domain.RepositoryContracts.SubastaRepository;
-import com.example.chatarra.Domain.entitys.Subasta;
+import com.example.chatarra.Domain.Entitys.Subasta;
 import com.example.chatarra.Infraestructure.Repositories.SubastaRepositoryJPA;
-import com.example.chatarra.Domain.exception.ResourceNotFoundException;
+import com.example.chatarra.Aplication.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ public class SubastaRepositoryImp implements SubastaRepository {
 
     @Override
     public Subasta buscarPorId(Integer id) {
-        return db.findById(id).orElseThrow(()-> new ResourceNotFoundException("No Existe respuesta: "+id));
+        return db.findById(id).orElseThrow(()-> new ResourceNotFoundException("No Existe esta subasta: "+id));
     }
 
     @Override

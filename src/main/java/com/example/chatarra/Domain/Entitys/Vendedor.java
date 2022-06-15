@@ -1,6 +1,5 @@
-package com.example.chatarra.Domain.entitys;
+package com.example.chatarra.Domain.Entitys;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -52,11 +51,9 @@ public class Vendedor {
     @Size(min = 4, max=50, message = "dirección no valida")
     private String direccion;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "vendedor",cascade = {CascadeType.ALL})
     private List<Subasta> subasta;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "vendedor",cascade = {CascadeType.ALL})
     private List<Chatarra> chatarra;
 }

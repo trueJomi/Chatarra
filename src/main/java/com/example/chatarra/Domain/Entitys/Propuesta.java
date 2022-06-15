@@ -1,4 +1,4 @@
-package com.example.chatarra.Domain.entitys;
+package com.example.chatarra.Domain.Entitys;
 
 import lombok.*;
 
@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Propuesta {
 
     @Id

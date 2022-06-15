@@ -1,9 +1,6 @@
-package com.example.chatarra.Domain.entitys;
+package com.example.chatarra.Domain.Entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +14,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class SubastaComprador {
 
     @Id

@@ -1,4 +1,4 @@
-package com.example.chatarra.Domain.entitys;
+package com.example.chatarra.Domain.Entitys;
 
 import lombok.*;
 

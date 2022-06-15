@@ -1,4 +1,4 @@
-package com.example.chatarra.Domain.entitys;
+package com.example.chatarra.Domain.Entitys;
 
 import lombok.*;
 
@@ -13,14 +13,14 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-
+@Builder
 public class Comprador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idShopper;
 
-    @Column(name = "usuario")
+    @Column(name = "usuario", unique = true)
     @Size(min = 4, max = 20, message = "Usuario no Valido")
     private String user;
 

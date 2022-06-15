@@ -1,4 +1,4 @@
-package com.example.chatarra.Domain.entitys;
+package com.example.chatarra.Domain.Entitys;
 
 import lombok.*;
 
@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Subasta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,7 @@ public class Subasta {
     private LocalDate fecha;
 
     @Column( name = "tiempoRecojo" )
-    private LocalDate TimepoRecocjo;
+    private LocalDate TiempoRecojo;
 
     @Column( name = "estado", nullable = false)
     private String status;

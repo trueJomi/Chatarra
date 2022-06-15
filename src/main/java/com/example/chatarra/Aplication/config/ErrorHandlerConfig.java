@@ -1,10 +1,10 @@
 package com.example.chatarra.Aplication.config;
 
 
-import com.example.chatarra.Domain.exception.GeneralServiceException;
-import com.example.chatarra.Domain.exception.IncorrectResourceRequestException;
-import com.example.chatarra.Domain.exception.ResourceNotFoundException;
-import com.example.chatarra.utils.WrapperResponse;
+import com.example.chatarra.Aplication.exception.GeneralServiceException;
+import com.example.chatarra.Aplication.exception.IncorrectResourceRequestException;
+import com.example.chatarra.Aplication.exception.ResourceNotFoundException;
+import com.example.chatarra.Aplication.utils.WrapperResponse;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

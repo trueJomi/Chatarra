@@ -1,4 +1,4 @@
-package com.example.chatarra.utils;
+package com.example.chatarra.Aplication.utils;
 
 
 import org.springframework.http.HttpStatus;

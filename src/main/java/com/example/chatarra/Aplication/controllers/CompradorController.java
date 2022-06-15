@@ -1,7 +1,7 @@
 package com.example.chatarra.Aplication.controllers;
 
 import com.example.chatarra.Domain.Services.CompradorService;
-import com.example.chatarra.Domain.entitys.Comprador;
+import com.example.chatarra.Domain.Entitys.Comprador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

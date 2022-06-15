@@ -1,8 +1,11 @@
 package com.example.chatarra.Domain.Services;
 
-import com.example.chatarra.Domain.entitys.Subasta;
+import com.example.chatarra.Domain.Entitys.Chatarra;
+import com.example.chatarra.Domain.Entitys.Subasta;
+import com.example.chatarra.Domain.Entitys.Vendedor;
+import com.example.chatarra.Infraestructure.Repositories.Imp.ChatarraRepositoryImp;
 import com.example.chatarra.Infraestructure.Repositories.Imp.SubastaRepositoryImp;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.chatarra.Infraestructure.Repositories.Imp.VendedorRepositoryImp;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,17 +15,30 @@ import java.util.List;
 @Service
 public class CrearSubastaService {
 
-    private  final SubastaRepositoryImp subastaRepositoryImp;
+    private final SubastaRepositoryImp subastaRepositoryImp;
 
-    public CrearSubastaService(SubastaRepositoryImp subastaRepositoryImp) {
+    private final ChatarraRepositoryImp chatarraRepositoryImp;
+
+    private final VendedorRepositoryImp vendedorRepositoryImp;
+
+    public CrearSubastaService(SubastaRepositoryImp subastaRepositoryImp, ChatarraRepositoryImp chatarraRepositoryImp, VendedorRepositoryImp vendedorRepositoryImp) {
         this.subastaRepositoryImp = subastaRepositoryImp;
+        this.chatarraRepositoryImp = chatarraRepositoryImp;
+        this.vendedorRepositoryImp = vendedorRepositoryImp;
     }
+
 
     @Transactional
     public Subasta crearSubasta(Subasta subasta){
+        Vendedor newVendedor=vendedorRepositoryImp.buscarPorId(subasta.getVendedor().getIdVendedor());
+        subasta.setVendedor(newVendedor);
         subasta.setStatus("activo");
         subasta.setFecha(LocalDate.now());
-        return subastaRepositoryImp.guardar(subasta);
+        Subasta newSubasta=subastaRepositoryImp.guardar(subasta);
+        Chatarra newChatarra=newSubasta.getChatarra();
+        newChatarra.setSubasta(newSubasta);
+        chatarraRepositoryImp.guardar(newChatarra);
+        return newSubasta;
     }
 
     @Transactional

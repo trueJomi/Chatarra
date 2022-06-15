@@ -1,5 +1,5 @@
 package com.example.chatarra.Infraestructure.Repositories;
-import com.example.chatarra.Domain.entitys.Subasta;
+import com.example.chatarra.Domain.Entitys.Subasta;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
