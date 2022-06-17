@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface CompradorRepositoryJPA extends JpaRepository<Comprador,Integer> {
-    public Optional<Comprador> findByUser(String user);
+    Comprador findByUserAndPassword(String user,String password);
 
+    Comprador findByIdShopper(Integer id);
 }
