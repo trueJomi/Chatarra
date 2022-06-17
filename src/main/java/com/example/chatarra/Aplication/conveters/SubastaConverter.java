@@ -19,7 +19,7 @@ public class SubastaConverter extends AbstractConverter<Subasta, CrearSubastaDto
         return CrearSubastaDto.builder()
                 .idSubasta(entity.getIdSubasta())
                 .fecha(entity.getFecha())
-                .FechaRecojo(entity.getTiempoRecojo())
+                .fechaRecojo(entity.getFechaRecojo())
                 .status(entity.getStatus())
                 .vendedor(entity.getVendedor().getIdVendedor())
                 .chatarra(chatarraConverter.fromEntity(entity.getChatarra()))

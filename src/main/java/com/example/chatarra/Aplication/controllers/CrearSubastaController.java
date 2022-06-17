@@ -28,10 +28,11 @@ public class CrearSubastaController {
     }
 
     @PostMapping("")
-    public ResponseEntity<WrapperResponse<Subasta>> CrearSubasta( @RequestBody CrearSubastaDto crearSubastaDto) {
+    public ResponseEntity<WrapperResponse<CrearSubastaDto>> CrearSubasta( @RequestBody CrearSubastaDto crearSubastaDto) {
         Subasta subasta=subastaConverter.fromDTO(crearSubastaDto);
         Subasta SubastaNew = crearSubastaService.crearSubasta(subasta);
-        return  new WrapperResponse<Subasta>(true,"success",SubastaNew).createResponse( HttpStatus.CREATED);
+        CrearSubastaDto response =subastaConverter.fromEntity(SubastaNew);
+        return  new WrapperResponse<CrearSubastaDto>(true,"success",response).createResponse( HttpStatus.CREATED);
     }
 
     @PutMapping("/eliminar/{id}")

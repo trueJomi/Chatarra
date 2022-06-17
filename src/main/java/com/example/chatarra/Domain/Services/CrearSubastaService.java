@@ -36,6 +36,7 @@ public class CrearSubastaService {
         subasta.setFecha(LocalDate.now());
         Subasta newSubasta=subastaRepositoryImp.guardar(subasta);
         Chatarra newChatarra=newSubasta.getChatarra();
+        newChatarra.setVendedor(newVendedor);
         newChatarra.setSubasta(newSubasta);
         chatarraRepositoryImp.guardar(newChatarra);
         return newSubasta;

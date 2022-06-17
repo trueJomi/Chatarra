@@ -16,7 +16,7 @@ public class CrearSubastaDto {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate fecha;
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate FechaRecojo;
+    private LocalDate fechaRecojo;
     private String status;
     private Integer vendedor;
     private CrearChatarraDto chatarra;
