@@ -23,7 +23,7 @@ public class VendedorControllers {
 
     @PostMapping("/login")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Vendedor login(@Valid @RequestBody Vendedor vendedor) throws Exception {
+    public Vendedor login(@Valid  @RequestBody Vendedor vendedor) throws Exception {
         String user = vendedor.getUser();
         String password = vendedor.getPassword();
         Vendedor vendedorNew = null;
@@ -40,17 +40,6 @@ public class VendedorControllers {
         Vendedor vendedor = vendedorService.buscarPorId(idVendedor);
         return new WrapperResponse<>(true, "success", vendedor).createResponse();
 
-    }
-    @PostMapping
-    public ResponseEntity<Vendedor> CrearVendedor(@Valid @RequestBody Vendedor vendedor) {
-        Vendedor vendedorNew = vendedorService.crearVendedor(vendedor);
-        return  new ResponseEntity<Vendedor>(vendedorNew, HttpStatus.CREATED);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Vendedor>> ListarVendedores() {
-        List<Vendedor> vendedores = vendedorService.ObtenerVendedores();
-        return  new ResponseEntity<List<Vendedor>>(vendedores, HttpStatus.CREATED);
     }
 }
 

@@ -7,10 +7,6 @@ import java.util.List;
 
 public interface VendedorRepository {
 
-    Vendedor guardar(Vendedor vendedor);
-
-    List<Vendedor> obtenerVendedores();
-
     Vendedor login(String user, String password);
     Vendedor buscarPorId(Integer id);
 }

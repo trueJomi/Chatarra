@@ -23,15 +23,4 @@ public class VendedorRepositoryImp implements VendedorRepository {
     public Vendedor buscarPorId(Integer id) {
         return db.findByIdVendedor(id);
     }
-
-
-    @Override
-    public Vendedor guardar(Vendedor vendedor) {
-        return db.save(vendedor);
-    }
-
-    @Override
-    public List<Vendedor> obtenerVendedores() {
-        return db.findAll();
-    }
 }

@@ -14,22 +14,12 @@ public class VendedorService {
 
     public VendedorService(VendedorRepositoryImp vendedorRepositoryImp) {
         this.vendedorRepositoryImp = vendedorRepositoryImp;
-
-
     }
+
     public Vendedor login(String user, String password){
         return vendedorRepositoryImp.login(user,password);
     }
     public Vendedor buscarPorId(Integer id){
         return vendedorRepositoryImp.buscarPorId(id);
-
-
-    }
-    public Vendedor crearVendedor(Vendedor vendedor){
-        return vendedorRepositoryImp.guardar(vendedor);
-    }
-
-    public List<Vendedor> ObtenerVendedores(){
-        return vendedorRepositoryImp.obtenerVendedores();
     }
 }
