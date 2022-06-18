@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -20,19 +22,19 @@ public class Subasta {
     private Integer idSubasta;
 
     @Column( name = "fecha",nullable = false)
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
     @Column( name = "tiempoRecojo" )
-    private LocalDate FechaRecojo;
+    private LocalDateTime FechaRecojo;
 
     @Column( name = "estado", nullable = false)
     private String status;
 
-    @Column( name = "PropuestaSelccionada")
-    private Integer Sleccionado;
+    @Column( name = "PropuestaSeleccionada")
+    private Integer seleccionado;
 
     @OneToMany(mappedBy = "subasta",cascade = {CascadeType.ALL})
-    private List<Propuesta> Propuestas;
+    private List<Propuesta> propuestas;
 
     @ManyToOne
     @JoinColumn( name = "idVendedor", foreignKey = @ForeignKey(name = "FK_Subasta_Vendedor"),nullable = false)

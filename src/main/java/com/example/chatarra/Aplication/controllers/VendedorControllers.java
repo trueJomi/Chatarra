@@ -22,8 +22,8 @@ public class VendedorControllers {
 
 
     @PostMapping("/login")
-    @CrossOrigin(origins = "http://localhost:4200")
-    public Vendedor login(@Valid  @RequestBody Vendedor vendedor) throws Exception {
+    ///@CrossOrigin(origins = "http://localhost:4200")
+    public Vendedor login( @RequestBody Vendedor vendedor) throws Exception {
         String user = vendedor.getUser();
         String password = vendedor.getPassword();
         Vendedor vendedorNew = null;

@@ -1,29 +1,52 @@
 package com.example.chatarra.Aplication.conveters;
 
 import com.example.chatarra.Aplication.dto.CrearSubastaDto;
+import com.example.chatarra.Aplication.dto.PropuestaDto;
+import com.example.chatarra.Domain.Entitys.Propuesta;
 import com.example.chatarra.Domain.Entitys.Subasta;
 import com.example.chatarra.Domain.Entitys.Vendedor;
+import com.example.chatarra.Domain.Services.PropuestaService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.Null;
+
 
 @AllArgsConstructor
 @Component
 public class SubastaConverter extends AbstractConverter<Subasta, CrearSubastaDto> {
 
     private ChatarraConverter chatarraConverter;
+    private PropuestaConverter propuestaConverter;
+
+    private PropuestaService propuestaService;
 
     @Override
     public CrearSubastaDto fromEntity(Subasta entity) {
+
         if (entity == null)
             return null;
+
+        PropuestaDto propuestaDto =null;
+
+        if (entity.getSeleccionado()!=null){
+            Propuesta propuesta= propuestaService.BuscarPorId(entity.getSeleccionado());
+            propuestaDto=propuestaConverter.fromEntity(propuesta);
+
+        }
+
+
         return CrearSubastaDto.builder()
                 .idSubasta(entity.getIdSubasta())
                 .fecha(entity.getFecha())
                 .fechaRecojo(entity.getFechaRecojo())
                 .status(entity.getStatus())
                 .vendedor(entity.getVendedor().getIdVendedor())
+                .seleccionado(propuestaDto)
+                .propuestas(propuestaConverter.fromEntity(entity.getPropuestas()))
                 .chatarra(chatarraConverter.fromEntity(entity.getChatarra()))
                 .build();
+
     }
 
     @Override
@@ -33,6 +56,8 @@ public class SubastaConverter extends AbstractConverter<Subasta, CrearSubastaDto
 
         Vendedor newVendedor= new Vendedor();
         newVendedor.setIdVendedor(dto.getVendedor());
+
+
 
         return Subasta.builder()
                 .idSubasta(dto.getIdSubasta())

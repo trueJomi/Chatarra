@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Entity
@@ -14,19 +16,18 @@ import java.time.LocalDate;
 @Setter
 @Builder
 public class Propuesta {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPropuesta;
 
     @Column( name = "precio",nullable = false)
-    private String price;
+    private Float price;
 
     @Column( name = "tiempo",nullable = false)
-    private LocalDate time;
+    private LocalDateTime time;
 
     @ManyToOne
-    @JoinColumn( name = "idAuction", foreignKey = @ForeignKey(name = "FK_Propuestas_Subasta"))
+    @JoinColumn( name = "idSubasta", foreignKey = @ForeignKey(name = "FK_Propuestas_Subasta"))
     private Subasta subasta;
 
     @ManyToOne
