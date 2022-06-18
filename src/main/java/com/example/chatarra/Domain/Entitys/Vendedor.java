@@ -11,6 +11,7 @@ import java.util.List;
 @Table(name = "vendedores")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Setter
 public class Vendedor {

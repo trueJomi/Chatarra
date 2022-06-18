@@ -28,7 +28,8 @@ public class AceptarPropuestaService {
         subasta.setSeleccionado(propuesta.getIdPropuesta());
         subasta.setStatus("aceptado");
 
-        return subasta;
+
+        return subastaRepository.guardar(subasta);
     }
 
     public Subasta cancelarAceptacion(Integer idSubasta){

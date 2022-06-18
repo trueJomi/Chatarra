@@ -26,7 +26,7 @@ public class Pago {
     private Float price;
 
     @OneToOne
-    @JoinColumn( name = "idAuction", foreignKey = @ForeignKey(name = "FK_Subasta_pago"))
+    @JoinColumn( name = "idSubasta", foreignKey = @ForeignKey(name = "FK_Subasta_pago"))
     private Subasta subasta;
 }
 

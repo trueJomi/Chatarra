@@ -1,5 +1,7 @@
 package com.example.chatarra.Aplication.controllers;
 
+import com.example.chatarra.Aplication.conveters.VendedorConverter;
+import com.example.chatarra.Aplication.dto.VendedorDto;
 import com.example.chatarra.Domain.Services.VendedorService;
 import com.example.chatarra.Domain.Entitys.Vendedor;
 import com.example.chatarra.Aplication.utils.WrapperResponse;
@@ -15,15 +17,16 @@ import java.util.List;
 public class VendedorControllers {
 
     private final VendedorService vendedorService;
+    private final VendedorConverter vendedorConverter;
 
-    public VendedorControllers(VendedorService vendedorService) {
+    public VendedorControllers(VendedorService vendedorService, VendedorConverter vendedorConverter) {
         this.vendedorService = vendedorService;
+        this.vendedorConverter = vendedorConverter;
     }
-
 
     @PostMapping("/login")
     ///@CrossOrigin(origins = "http://localhost:4200")
-    public Vendedor login( @RequestBody Vendedor vendedor) throws Exception {
+    public ResponseEntity<WrapperResponse<VendedorDto>> login(@RequestBody Vendedor vendedor) throws Exception {
         String user = vendedor.getUser();
         String password = vendedor.getPassword();
         Vendedor vendedorNew = null;
@@ -33,12 +36,17 @@ public class VendedorControllers {
         if (vendedorNew == null) {
             throw new Exception("Malas Credenciales");
         }
-        return vendedorNew;
+        VendedorDto response= vendedorConverter.fromEntity(vendedorNew);
+        return new WrapperResponse<VendedorDto>(true,"success",response)
+                .createResponse(HttpStatus.OK);
     }
+
     @GetMapping("/{idVendedor}")
-    public ResponseEntity<WrapperResponse<Vendedor>> buscarPorId(@PathVariable("idVendedor") Integer idVendedor ) {
+    public ResponseEntity<WrapperResponse<VendedorDto>> buscarPorId(@PathVariable("idVendedor") Integer idVendedor ) {
         Vendedor vendedor = vendedorService.buscarPorId(idVendedor);
-        return new WrapperResponse<>(true, "success", vendedor).createResponse();
+        VendedorDto vendedorDto= vendedorConverter.fromEntity(vendedor);
+        return new WrapperResponse<VendedorDto>(true, "success", vendedorDto)
+                .createResponse(HttpStatus.OK);
 
     }
 }
