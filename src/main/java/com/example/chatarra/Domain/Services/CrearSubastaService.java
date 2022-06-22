@@ -63,6 +63,21 @@ public class CrearSubastaService {
 
     @Transactional
     public Subasta editarSubasta(Subasta subasta){
+        Vendedor newVendedor=vendedorRepository.buscarPorId(subasta.getVendedor().getIdVendedor());
+        subasta.setVendedor(newVendedor);
+        subasta.setStatus("activo");
+        subasta.setFecha(LocalDateTime.now());
+        List<Propuesta> propuestas = new ArrayList<Propuesta>();
+        subasta.setPropuestas(propuestas);
+        Subasta newSubasta=subastaRepository.guardar(subasta);
+        Chatarra newChatarra=newSubasta.getChatarra();
+        newChatarra.setDescription(subasta.getChatarra().getDescription());
+        newChatarra.setTitulo(subasta.getChatarra().getTitulo());
+        newChatarra.setPrecioBase(subasta.getChatarra().getPrecioBase());
+        newChatarra.setVendedor(newVendedor);
+        newChatarra.setSubasta(newSubasta);
+        chatarraRepository.guardar(newChatarra);
+
         return subastaRepository.guardar(subasta);
     }
 

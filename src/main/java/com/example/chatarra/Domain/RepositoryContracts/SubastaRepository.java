@@ -1,6 +1,7 @@
 package com.example.chatarra.Domain.RepositoryContracts;
 
 import com.example.chatarra.Domain.Entitys.Subasta;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 

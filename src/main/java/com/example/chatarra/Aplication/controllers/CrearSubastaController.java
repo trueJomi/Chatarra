@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/crearSubasta")
+@RequestMapping("/subasta")
 public class CrearSubastaController {
 
     private final CrearSubastaService crearSubastaService;
@@ -29,50 +29,58 @@ public class CrearSubastaController {
         this.aceptarPropuestaService = aceptarPropuestaService;
     }
 
-    @PostMapping("")
-    public ResponseEntity<WrapperResponse<CrearSubastaDto>> CrearSubasta( @RequestBody CrearSubastaDto crearSubastaDto) {
-        Subasta subasta=subastaConverter.fromDTO(crearSubastaDto);
+    @PostMapping("/crear")
+    public ResponseEntity<WrapperResponse<CrearSubastaDto>> CrearSubasta(@RequestBody CrearSubastaDto crearSubastaDto) {
+        Subasta subasta = subastaConverter.fromDTO(crearSubastaDto);
         Subasta SubastaNew = crearSubastaService.crearSubasta(subasta);
-        CrearSubastaDto response =subastaConverter.fromEntity(SubastaNew);
-        return  new WrapperResponse<CrearSubastaDto>(true,"success",response).createResponse( HttpStatus.CREATED);
+        CrearSubastaDto response = subastaConverter.fromEntity(SubastaNew);
+        return new WrapperResponse<CrearSubastaDto>(true, "success", response).createResponse(HttpStatus.CREATED);
     }
 
     @PutMapping("/eliminar/{id}")
     public ResponseEntity<WrapperResponse<Subasta>> Eliminar(@PathVariable("id") Integer id) {
         Subasta SubastaDeleted = crearSubastaService.eliminarSubasta(id);
-        return  new WrapperResponse<Subasta>(true,"success",SubastaDeleted).createResponse(HttpStatus.OK);
+        return new WrapperResponse<Subasta>(true, "success", SubastaDeleted).createResponse(HttpStatus.OK);
     }
 
     @GetMapping("/mis/{ids}")
-    public ResponseEntity<WrapperResponse<List<CrearSubastaDto>>> Listar(@PathVariable("ids") Integer id){
-        List<Subasta> subastasList= crearSubastaService.misSubastas(id);
-        List<CrearSubastaDto> subastaDtoList=subastaConverter.fromEntity(subastasList);
-        return  new WrapperResponse<List<CrearSubastaDto>>(true,"success",subastaDtoList)
+    public ResponseEntity<WrapperResponse<List<CrearSubastaDto>>> Listar(@PathVariable("ids") Integer id) {
+        List<Subasta> subastasList = crearSubastaService.misSubastas(id);
+        List<CrearSubastaDto> subastaDtoList = subastaConverter.fromEntity(subastasList);
+        return new WrapperResponse<List<CrearSubastaDto>>(true, "success", subastaDtoList)
                 .createResponse(HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<WrapperResponse<CrearSubastaDto>> ObtenerPorId(@PathVariable("id") Integer id ){
-        Subasta subasta =crearSubastaService.buscarPorId(id);
-        CrearSubastaDto subastaDto= subastaConverter.fromEntity(subasta);
-        return new WrapperResponse<>(true,"success",subastaDto)
+    public ResponseEntity<WrapperResponse<CrearSubastaDto>> ObtenerPorId(@PathVariable("id") Integer id) {
+        Subasta subasta = crearSubastaService.buscarPorId(id);
+        CrearSubastaDto subastaDto = subastaConverter.fromEntity(subasta);
+        return new WrapperResponse<>(true, "success", subastaDto)
                 .createResponse(HttpStatus.OK);
     }
 
     @GetMapping("estados/{ides}/{estado}")
-    public ResponseEntity<WrapperResponse<List<CrearSubastaDto>>> ListarEstados(@PathVariable("ides") Integer id, @PathVariable("estado") String estado){
-        List<Subasta> subastasList= crearSubastaService.SubsatasEstados(id,estado);
-        List<CrearSubastaDto> SubastaListDto= subastaConverter.fromEntity(subastasList);
-        return  new WrapperResponse<List<CrearSubastaDto>>(true,"success",SubastaListDto)
+    public ResponseEntity<WrapperResponse<List<CrearSubastaDto>>> ListarEstados(@PathVariable("ides") Integer id, @PathVariable("estado") String estado) {
+        List<Subasta> subastasList = crearSubastaService.SubsatasEstados(id, estado);
+        List<CrearSubastaDto> SubastaListDto = subastaConverter.fromEntity(subastasList);
+        return new WrapperResponse<List<CrearSubastaDto>>(true, "success", SubastaListDto)
                 .createResponse(HttpStatus.OK);
     }
 
     @PutMapping("eleccion/{ids}/{idp}")
-    public  ResponseEntity<WrapperResponse<CrearSubastaDto>> AsegniarPropuesta(@PathVariable("ids") Integer idSubasta,@PathVariable("idp") Integer idPropuesta){
-        Subasta propuestaAsignada= aceptarPropuestaService.aceptarPropuesta(idSubasta,idPropuesta);
-        CrearSubastaDto response= subastaConverter.fromEntity(propuestaAsignada);
-        return new WrapperResponse<CrearSubastaDto>(true,"success",response)
+    public ResponseEntity<WrapperResponse<CrearSubastaDto>> AsegniarPropuesta(@PathVariable("ids") Integer idSubasta, @PathVariable("idp") Integer idPropuesta) {
+        Subasta propuestaAsignada = aceptarPropuestaService.aceptarPropuesta(idSubasta, idPropuesta);
+        CrearSubastaDto response = subastaConverter.fromEntity(propuestaAsignada);
+        return new WrapperResponse<CrearSubastaDto>(true, "success", response)
                 .createResponse(HttpStatus.OK);
     }
 
+    @PutMapping("/editar")
+    public ResponseEntity<WrapperResponse<CrearSubastaDto>> EditarSubasta(@RequestBody CrearSubastaDto crearSubastaDto) {
+        Subasta subasta = subastaConverter.fromDTO(crearSubastaDto);
+        Subasta SubastaNew = crearSubastaService.editarSubasta(subasta);
+        CrearSubastaDto response = subastaConverter.fromEntity(SubastaNew);
+        return new WrapperResponse<CrearSubastaDto>(true, "success", response).createResponse(HttpStatus.CREATED);
+
+    }
 }
