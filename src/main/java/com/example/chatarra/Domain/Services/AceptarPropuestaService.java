@@ -33,13 +33,10 @@ public class AceptarPropuestaService {
     }
 
     public Subasta cancelarAceptacion(Integer idSubasta){
-
         Subasta subasta= subastaRepository.buscarPorId(idSubasta);
-
         subasta.setSeleccionado(null);
         subasta.setStatus("activo");
-
-        return subasta;
+        return subastaRepository.guardar(subasta);
     }
 
 
