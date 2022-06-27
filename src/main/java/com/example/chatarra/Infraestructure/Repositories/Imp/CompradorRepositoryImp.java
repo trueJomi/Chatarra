@@ -6,6 +6,8 @@ import com.example.chatarra.Infraestructure.Repositories.CompradorRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class CompradorRepositoryImp implements CompradorRepository {
 
@@ -20,5 +22,26 @@ public class CompradorRepositoryImp implements CompradorRepository {
     @Override
     public Comprador buscarPorId(Integer id) {
         return db.findByIdShopper(id);
+    }
+
+
+    public Comprador registrarComprador(Comprador comprador) {
+        return db.save(comprador);
+    }
+
+
+    public Comprador modificarComprador(Comprador comprador) {
+        return db.save(comprador);
+    }
+
+
+    public List<Comprador> listarCompradores() {
+        return db.findAll();
+    }
+
+
+    public void eliminarComprador(Integer id) {
+        db.deleteById(id);
+
     }
 }

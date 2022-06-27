@@ -6,10 +6,12 @@ import com.example.chatarra.Aplication.utils.WrapperResponse;
 import com.example.chatarra.Domain.Services.CompradorService;
 import com.example.chatarra.Domain.Entitys.Comprador;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/comprador")
@@ -44,5 +46,28 @@ public class CompradorController {
         Comprador comprador = compradorService.buscarPorId(idShopper);
         CompradorDto compradorDto = compradorConverter.fromEntity(comprador);
         return new WrapperResponse<>(true,"success",compradorDto).createResponse();
+    }
+    @GetMapping
+    public ResponseEntity<List<Comprador>> listarCompradores(){
+        List<Comprador> compradores=compradorService.listarCompradores();
+        return  new ResponseEntity<List<Comprador>>(compradores, HttpStatus.CREATED);
+    }
+
+    @PostMapping
+    public ResponseEntity<Comprador> registrarComprador(@Valid @RequestBody Comprador comprador){
+        Comprador compradorNew=compradorService.registrarComprador(comprador);
+        return new ResponseEntity<Comprador>(compradorNew, HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<Comprador> modificarComprador(@Valid @RequestBody Comprador comprador){
+        Comprador compradorUpdate=compradorService.modificarComprador(comprador);
+        return  new ResponseEntity<Comprador>(compradorUpdate, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarComprador(@PathVariable("id") Integer idShopper){
+        compradorService.eliminarComprador(idShopper);
+        return  new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 }

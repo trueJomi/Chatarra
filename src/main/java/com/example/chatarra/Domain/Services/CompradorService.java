@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.chatarra.Infraestructure.Repositories.Imp.CompradorRepositoryImp;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class CompradorService {
@@ -20,4 +20,19 @@ public class CompradorService {
         return compradorRepositoryImp.buscarPorId(id);
     }
 
+    public Comprador registrarComprador(Comprador comprador) {
+        return compradorRepositoryImp.registrarComprador(comprador);
+    }
+
+    public Comprador modificarComprador(Comprador comprador) {
+        return compradorRepositoryImp.modificarComprador(comprador);
+    }
+
+    public List<Comprador> listarCompradores() {
+        return compradorRepositoryImp.listarCompradores();
+    }
+    public void eliminarComprador(Integer id) {
+        compradorRepositoryImp.eliminarComprador(id);
+
+    }
 }
