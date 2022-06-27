@@ -68,12 +68,21 @@ public class CrearSubastaController {
     }
 
     @PutMapping("eleccion/{ids}/{idp}")
-    public ResponseEntity<WrapperResponse<CrearSubastaDto>> AsegniarPropuesta(@PathVariable("ids") Integer idSubasta, @PathVariable("idp") Integer idPropuesta) {
+    public ResponseEntity<WrapperResponse<CrearSubastaDto>> AsignarPropuesta(@PathVariable("ids") Integer idSubasta, @PathVariable("idp") Integer idPropuesta) {
         Subasta propuestaAsignada = aceptarPropuestaService.aceptarPropuesta(idSubasta, idPropuesta);
         CrearSubastaDto response = subastaConverter.fromEntity(propuestaAsignada);
         return new WrapperResponse<CrearSubastaDto>(true, "success", response)
                 .createResponse(HttpStatus.OK);
     }
+
+    @PutMapping("eleccionAnulada/{id}")
+    public ResponseEntity<WrapperResponse<CrearSubastaDto>> AsignacionAnulada(@PathVariable("id") Integer idSubasta) {
+        Subasta propuestaAnulada= aceptarPropuestaService.cancelarAceptacion(idSubasta);
+        CrearSubastaDto response = subastaConverter.fromEntity(propuestaAnulada);
+        return new WrapperResponse<CrearSubastaDto>(true, "success", response)
+                .createResponse(HttpStatus.OK);
+    }
+
 
     @PutMapping("/editar")
     public ResponseEntity<WrapperResponse<CrearSubastaDto>> EditarSubasta(@RequestBody CrearSubastaDto crearSubastaDto) {
@@ -83,4 +92,6 @@ public class CrearSubastaController {
         return new WrapperResponse<CrearSubastaDto>(true, "success", response).createResponse(HttpStatus.CREATED);
 
     }
+
+
 }
