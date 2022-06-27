@@ -49,4 +49,18 @@ public class PropuestaService {
     public Propuesta BuscarPorId(Integer id){
         return propuestaRepository.BuscarPorId(id);
     }
+
+    public Propuesta PropuestaMayor(Integer id){
+        List<Propuesta> propuestas = propuestaRepository.PropuestaPorSubastas(id);
+        if (propuestas.size()==0){
+            return null;
+        }
+        Propuesta mayor= propuestas.get(0);
+        for(int i=1; i <propuestas.size();i++){
+            if(propuestas.get(i).getPrice()> mayor.getPrice()){
+                mayor=propuestas.get(i);
+            }
+        }
+        return mayor;
+    }
 }
