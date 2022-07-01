@@ -1,7 +1,7 @@
 package com.example.chatarra.Aplication.conveters;
 
 import com.example.chatarra.Aplication.dto.CrearSubastaDto;
-import com.example.chatarra.Aplication.dto.PropuestaDto;
+import com.example.chatarra.Aplication.dto.PropuestaExtendDto;
 import com.example.chatarra.Domain.Entitys.Propuesta;
 import com.example.chatarra.Domain.Entitys.Subasta;
 import com.example.chatarra.Domain.Entitys.Vendedor;
@@ -17,6 +17,7 @@ import javax.validation.constraints.Null;
 public class SubastaConverter extends AbstractConverter<Subasta, CrearSubastaDto> {
 
     private ChatarraConverter chatarraConverter;
+    private PropuestaExtendConverter propuestaExtendConverter;
     private PropuestaConverter propuestaConverter;
 
     private PropuestaService propuestaService;
@@ -27,11 +28,11 @@ public class SubastaConverter extends AbstractConverter<Subasta, CrearSubastaDto
         if (entity == null)
             return null;
 
-        PropuestaDto propuestaDto =null;
+        PropuestaExtendDto propuestaExtendDto=null;
 
         if (entity.getSeleccionado()!=null){
             Propuesta propuesta= propuestaService.BuscarPorId(entity.getSeleccionado());
-            propuestaDto=propuestaConverter.fromEntity(propuesta);
+            propuestaExtendDto=propuestaExtendConverter.fromEntity(propuesta);
 
         }
 
@@ -42,7 +43,7 @@ public class SubastaConverter extends AbstractConverter<Subasta, CrearSubastaDto
                 .fechaRecojo(entity.getFechaRecojo())
                 .status(entity.getStatus())
                 .vendedor(entity.getVendedor().getIdVendedor())
-                .seleccionado(propuestaDto)
+                .seleccionado(propuestaExtendDto)
                 .propuestas(propuestaConverter.fromEntity(entity.getPropuestas()))
                 .chatarra(chatarraConverter.fromEntity(entity.getChatarra()))
                 .build();

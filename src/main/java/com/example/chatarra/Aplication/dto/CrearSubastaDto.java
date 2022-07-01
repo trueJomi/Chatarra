@@ -17,7 +17,7 @@ public class CrearSubastaDto {
     private Integer idSubasta;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime fecha;
-    private PropuestaDto seleccionado;
+    private PropuestaExtendDto seleccionado;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime fechaRecojo;
     private List<PropuestaDto> propuestas;
