@@ -34,5 +34,9 @@ public class PropuestaRepositoryImp implements PropuestaRepository {
     public Propuesta BuscarPorId(Integer id) {
         return db.findById(id).orElseThrow(()-> new ResourceNotFoundException("No Existe esta la propuesta: "+id));
     }
+    @Override
+    public void eliminarPorSubastaYComprador(Integer idS, Integer idC) {
+        db.deleteBySubastaAndComprador(idS,idC);
+    }
 
 }

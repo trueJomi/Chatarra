@@ -63,4 +63,7 @@ public class PropuestaService {
         }
         return mayor;
     }
+    public void eliminarPorSubastaYComprador(Integer idS,Integer idC) {
+        propuestaRepository.eliminarPorSubastaYComprador(idS,idC);
+    }
 }

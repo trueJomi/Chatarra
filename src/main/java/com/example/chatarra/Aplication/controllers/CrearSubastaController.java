@@ -58,6 +58,13 @@ public class CrearSubastaController {
         return new WrapperResponse<>(true, "success", subastaDto)
                 .createResponse(HttpStatus.OK);
     }
+    @GetMapping("estados/{estado}")
+    public ResponseEntity<WrapperResponse<List<CrearSubastaDto>>> FiltrarSubastasPorEstado(@PathVariable("estado") String estado) {
+        List<Subasta> subastasList = crearSubastaService.FiltrarSubastasPorEstado(estado);
+        List<CrearSubastaDto> SubastaListDto = subastaConverter.fromEntity(subastasList);
+        return new WrapperResponse<List<CrearSubastaDto>>(true, "success", SubastaListDto)
+                .createResponse(HttpStatus.OK);
+    }
 
     @GetMapping("estados/{ides}/{estado}")
     public ResponseEntity<WrapperResponse<List<CrearSubastaDto>>> ListarEstados(@PathVariable("ides") Integer id, @PathVariable("estado") String estado) {

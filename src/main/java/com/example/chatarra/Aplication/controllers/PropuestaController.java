@@ -6,12 +6,16 @@ import com.example.chatarra.Aplication.dto.PropuestaDto;
 import com.example.chatarra.Aplication.dto.PropuestaExtendDto;
 import com.example.chatarra.Aplication.utils.WrapperResponse;
 import com.example.chatarra.Domain.Entitys.Propuesta;
+import com.example.chatarra.Domain.Entitys.Subasta;
+import com.example.chatarra.Domain.Services.CrearSubastaService;
 import com.example.chatarra.Domain.Services.PropuestaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/propuesta")
@@ -69,4 +73,10 @@ public class PropuestaController {
                 .createResponse( HttpStatus.OK);
     }
 
+    @DeleteMapping("/{idS}/{idC}")
+    public ResponseEntity<WrapperResponse<Void>> eliminarPorSubastaYComprador(@PathVariable("idS") Integer idS, @PathVariable("idC") Integer idC) {
+            propuestaService.eliminarPorSubastaYComprador(idS,idC);
+            return  new WrapperResponse<Void>(true,"success",null).createResponse(HttpStatus.OK);
+
+    }
 }

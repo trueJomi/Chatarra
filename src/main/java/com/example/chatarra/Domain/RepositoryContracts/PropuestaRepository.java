@@ -13,4 +13,6 @@ public interface PropuestaRepository {
 
     Propuesta BuscarPorId(Integer id);
 
+    void eliminarPorSubastaYComprador(Integer idS,Integer idC);
+
 }

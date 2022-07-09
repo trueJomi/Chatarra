@@ -92,4 +92,8 @@ public class CrearSubastaService {
     public Subasta buscarPorId( Integer id){
         return subastaRepository.buscarPorId(id);
     }
+
+    public List<Subasta> FiltrarSubastasPorEstado(String estado){
+        return subastaRepository.FiltrarEstado(estado);
+    }
 }
